@@ -1,0 +1,203 @@
+$color-chocolate: #864313;
+$color-cream: #ffffcc;
+
+$color-flame: #E29822;
+
+$candle-height: 10em;
+$candle-width: 2.5em;
+$candle-distance: $candle-width + 1em;
+$candle-color: #ffcc00;
+
+$candle-list: #77DD77, #FF6961, #FFB347, #779ECB, #B19CD9, #A5D3CA, #C0F7FE;
+
+$cake-color: darken($color-chocolate, 2.5%);
+$cake-height: 30em;
+$cake-layers: 3;
+
+
+
+@function layer-size($position){
+  @return (($cake-height/2)*$position/$cake-layers);
+}    
+
+@keyframes flames{
+  0%{
+    height: $candle-width - 0.3em;
+    transform: rotate(0.5deg);
+    opacity: 0.8;
+  }
+  100%{
+    height: $candle-width;
+    transform: rotate(-0.5deg);
+    border-radius: 50% / 30%;
+    border-top-right-radius: 50% 60%;
+    border-top-left-radius: 50% 60%;
+    opacity: 1;
+  }
+}
+
+@keyframes candles{
+  0%{
+    height: $candle-height;
+    border-radius: 50% / 5%;
+  }
+  100%{
+    height: 2em;
+    border-radius: 50% / 25%;
+  }
+}
+
+
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+body{
+  background: mix(pink, white);
+  color: $color-chocolate;
+  font-size: 12px;
+}
+
+p{
+  text-align: center;
+  padding: 2em;
+  font-size: 16px;
+}
+
+a{
+  color: inherit;
+  background: $color-cream;
+  text-decoration: none;
+}
+
+.title{
+  text-align: center;
+  font-size: 3em;
+}
+
+
+
+.cake{
+  height: $cake-height;
+  width: $cake-height;
+  margin: $candle-height auto 0;
+  position: relative;
+  
+  border-radius: 100% / 50%;
+  background: $cake-color;
+  border-bottom: 0.25em solid darken($color-chocolate, 20%);
+    
+  //top
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    height: ($cake-height)/2;
+    border-radius: 50%;
+    background: $cake-color;
+    border-bottom: 0.5em solid darken($cake-color, 20%);
+    z-index: 10;
+  }
+  
+  //bottom
+  &::after{
+    content: '';
+    position: absolute;
+    top: ($cake-height/$cake-layers*1)/2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: ($cake-height)/2;
+    border-radius: 50%;
+    border-top-right-radius: 25%;
+    border-top-left-radius: 25%;
+    background: $color-chocolate;
+    
+    box-shadow: 0 layer-size(1) 0 $color-cream,
+      0 layer-size(2) 0 $color-chocolate;
+  }
+}
+
+.candles{
+  z-index: 20;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  
+
+  height: $candle-height;
+  width: $candle-width;
+  position: absolute;
+  bottom: $cake-height - $candle-height + 2.5em;
+  left: 0; right: 0;
+  margin: 0 auto;
+  border-radius: 50% / 5%;
+  
+  animation: candles 10s 2s 2 alternate;
+  
+
+  background: $candle-color;
+  box-shadow: -($candle-distance) 5em 0 0 nth($candle-list, 1),
+    ($candle-distance) 5em 0 0 nth($candle-list, 2),
+    -($candle-distance)*2 -2.5em 0 -3px nth($candle-list, 3),
+    ($candle-distance)*2 -2.5em 0 -3px nth($candle-list, 4),
+    -($candle-distance)*3 2em 0 -1px nth($candle-list, 5),
+    ($candle-distance)*3 2em 0 -1px nth($candle-list, 6);
+
+  
+    //top
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 10px;
+    border-radius: 50%;
+    background: darken($candle-color, 10%);
+    
+    box-shadow: -($candle-distance) 5em 0 0 darken(nth($candle-list, 1), 10%),
+      ($candle-distance) 5em 0 0 darken(nth($candle-list, 2), 10%),
+      -($candle-distance)*2 -2.5em 0 -3px darken(nth($candle-list, 3), 10%),
+      ($candle-distance)*2 -2.5em 0 -3px darken(nth($candle-list, 4), 10%),
+      -($candle-distance)*3 2em 0 -1px darken(nth($candle-list, 5), 10%),
+      ($candle-distance)*3 2em 0 -1px darken(nth($candle-list, 6), 10%);
+  }
+
+  //flame
+  &::after{
+    content: '';
+    position: absolute;
+    top: -($candle-width)*4/5;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 50% / 40%;
+    border-top-right-radius: 50% 60%;
+    border-top-left-radius: 50% 60%;
+    background: $color-flame;
+    height: $candle-width;
+    width: $candle-width - 1em;
+    
+    animation: flames 0.75s infinite alternate;
+
+    box-shadow: 0 0 0 1px lighten($color-flame, 10%),
+      -($candle-distance) 5em 1px 0 $color-flame,
+      ($candle-distance) 5em 1px 0 $color-flame,
+      -($candle-distance)*2 -2.5em 1px 0 $color-flame,
+      ($candle-distance)*2 -2.5em 1px 0 $color-flame,
+      -($candle-distance)*3 2em 1px 0 $color-flame,
+      ($candle-distance)*3 2em 1px 0 $color-flame;
+  }
+  
+}

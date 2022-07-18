@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+/*Reset*/
+@import 'http://www.samkgo.com/training/edX/css-introduction/css/normalize.css';
+/* Change all elements to use border-box */
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+/*******/
+
+body {
+	font-family: "ff-meta-web-pro", sans-serif;
+	background-image: url(http://www.samkgo.com/training/edX/css-introduction/images/birthday-bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+header {
+	text-align: center;
+	/* background-color: rgba(193,39,45,0.20); */
+	margin: 20px 0px 0px 0px;
+}
+h1 {
+	font-family: "barricada-pro", sans-serif;
+	font-size: 4em;
+	text-shadow: 2px 2px 1px #fff;
+	margin: 0px auto;
+	padding: 10px 5px 5px 5px;
+}
+.color1 {
+	color: #911d22;
+}
+.color2 {
+	color: #c1272d;
+}
+.color3 {
+	color: #57090c;
+}
+.color4 {
+	color: #740c10;
+}
+h2 {
+	font-size: 1.2em;
+	color: #57090c;
+	margin: 5px;
+}
+button {
+	font-size: 1.2em;
+	color: #57090c;
+	background-color: #FBF0F6;
+	border-radius: 5px;
+	padding: 5px 50px;
+	margin: 10px 0px 20px 0px;
+	box-shadow: 1px 1px 1px 1px rgba(87,9,12,0.5);
+}
+button:hover {
+	color: #FBF0F6;
+	background-color: #57090c;
+	cursor: pointer;
+}
+#animation {
+	display: flex;
+	flex-flow: nowrap;
+	justify-content: center;
+}
+#animation1 {
+	position: absolute;
+	z-index: 10;
+	width: 900px;
+	display: flex;
+	flex-flow: nowrap;
+	justify-content: center;
+}
+#animation2 {
+	z-index: 20;
+}
+canvas {
+	border: 0px solid black;
+}
+footer {
+	color: #57090c;
+	text-align: center;
+	background-color: rgba(193,39,45,0.20);
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px;
+}
+
+@media (max-width: 48em) {
+footer {
+	flex-flow: column;
+	justify-content: center;
+}
+}
+#final {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+#credits {
+	padding: 0px 5px;
+	margin: 35px 0px 0px 0px;
+}
+footer img {
+	margin-left: 10px;
+}
+footer a {
+	color: #57090c;
+}
+#copyright {
+	margin-right: 10px;
+}
+
