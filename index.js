@@ -257,6 +257,9 @@ window.addEventListener("load", function () {
 	// Button click: Congratulate!
 	var button = document.getElementById("congratulate");
 	button.addEventListener("click", function () {
+		document.getElementById("congratulate").onclick = function () {
+			location.href = "www.yoursite.com";
+		};
 		var x = randomFloat(300, 600);
 		var y = randomFloat(50, 200);
 
